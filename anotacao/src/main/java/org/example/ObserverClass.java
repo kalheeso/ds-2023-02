@@ -1,8 +1,8 @@
 package org.example;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+
 @Observer(observed="observable_matheus")
 public class ObserverClass {
 
@@ -21,12 +21,12 @@ class Observable {
     }
 
     public void notifyObservers() {
-        for (Object observer : observers) {
+        observers.forEach((observer) -> {
             Observer annotation = observer.getClass().getAnnotation(Observer.class);
 
             if (annotation != null && annotation.observed().equals(identificator)) {
                 System.out.println(annotation.observed() + " equals " + identificator);
             }
-        }
+        });
     }
 }
